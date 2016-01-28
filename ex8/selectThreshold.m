@@ -25,9 +25,10 @@ for epsilon = min(pval):stepsize:max(pval)
 
 
 	pred = (pval < epsilon); % anomaly prediction
-	tp = sum((pred == 0) & (yval == 0));
-	fp = sum((pred == 0) & (yval == 1));
-	fn = sum((pred == 1) & (yval == 0));
+	tp = sum((pred == 1) & (yval == 1));
+	fp = sum((pred == 1) & (yval == 0));
+	fn = sum((pred == 0) & (yval == 1));
+
 	prec = tp / (tp + fp);
 	rec = tp / (tp + fn);
 	F1 = (2 * prec * rec) / (prec + rec);
